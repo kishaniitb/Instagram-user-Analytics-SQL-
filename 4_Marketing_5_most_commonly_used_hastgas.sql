@@ -1,8 +1,12 @@
-use ig_clone
+USE ig_clone;
 
-select tag_name,id, photo_id,count(tag_id) from tags
-Inner join photo_tags
-ON tags.id = photo_tags.tag_id
-Group By tag_name
-Order By count(tag_id) desc
-Limit 5 ;
+SELECT
+    tags.tag_name,
+    tags.id,
+    photo_tags.photo_id,
+    COUNT(photo_tags.tag_id) AS TagCount
+FROM tags
+INNER JOIN photo_tags ON tags.id = photo_tags.tag_id
+GROUP BY tags.tag_name, tags.id, photo_tags.photo_id
+ORDER BY TagCount DESC
+LIMIT 5;
