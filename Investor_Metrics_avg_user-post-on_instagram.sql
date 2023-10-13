@@ -1,5 +1,4 @@
+USE ig_clone;
 
-use ig_clone
-
-select
- (select count(*) from photos) / (select count(*) from users) as avg ;
+SELECT
+    (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg;
