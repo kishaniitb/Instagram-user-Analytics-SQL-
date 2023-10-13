@@ -1,7 +1,9 @@
+USE ig_clone;
 
-use ig_clone
-
-select date_format(created_at, '%W') as Day_of_Week, count(*) as total  from  users
-Group By DAY_OF_week
-Order by total desc
-Limit 2;
+SELECT
+    DATE_FORMAT(created_at, '%W') AS Day_of_Week,
+    COUNT(*) AS Total
+FROM users
+GROUP BY Day_of_Week
+ORDER BY Total DESC
+LIMIT 2;
