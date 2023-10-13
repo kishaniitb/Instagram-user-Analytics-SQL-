@@ -1,7 +1,10 @@
-use ig_clone
+USE ig_clone;
 
-select username, count(*) as Number_of_likes from users
-INNER JOIN likes
-on likes.user_id= users.id
-Group By likes.user_id
-Having Number_of_likes = (select Count(*) from photos);
+SELECT
+    u.username,
+    COUNT(*) AS Number_of_likes
+FROM users u
+INNER JOIN likes l
+ON l.user_id = u.id
+GROUP BY u.id
+HAVING Number_of_likes = (SELECT COUNT(*) FROM photos);
